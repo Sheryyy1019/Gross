@@ -1,0 +1,21 @@
+<h1>Gross 交換サイト</h1>
+<h3>投稿を検索</h3>
+ <%= form_tag({controller:"posts",action:"index"}, method: :get) do %>
+   <%= text_field_tag :search %>
+   <%= submit_tag '検索する'  %>
+<% end %>
+
+<h3>募集一覧</h3>
+<%= link_to "新規募集へ", posts_new_path %>
+<div class="posts-container">
+  <% @posts.each do |t| %>
+    <div class="post">
+      <%= t.title %>
+      <%= t.give %>
+      <%= t.want %>
+      <%= t.about %>
+      <%= t.serve %>
+      <%= t.image %>
+    </div>
+  <% end %>
+</div>
