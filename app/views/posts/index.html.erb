@@ -8,6 +8,7 @@
 <h3>募集一覧</h3>
 <%= link_to "新規募集へ", posts_new_path %>
 <div class="posts-container">
+
   <% @posts.each do |t| %>
     <div class="post">
       <%= t.title %>
@@ -16,6 +17,11 @@
       <%= t.about %>
       <%= t.serve %>
       <%= t.image %>
+      <a href="/users/<%= t.user.id %>"><%= t.user.name %></a>　#追記
     </div>
   <% end %>
 </div>
+
+<% if user_signed_in? %>
+<%= link_to "マイページへ", user_path(current_user.id) %>　
+<% end %>
